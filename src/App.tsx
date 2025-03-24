@@ -18,6 +18,14 @@ export const goods = [
 export const App: React.FC = () => {
   const [selectedGood, setSelectedGood] = useState('Jam');
 
+  const handleRemoveGood = () => {
+    setSelectedGood('');
+  };
+
+  const handleAddGood = (good: string) => {
+    setSelectedGood(good);
+  };
+
   return (
     <main className="section container">
       {selectedGood ? (
@@ -28,7 +36,7 @@ export const App: React.FC = () => {
             data-cy="ClearButton"
             type="button"
             className="delete ml-3"
-            onClick={() => setSelectedGood('')}
+            onClick={handleRemoveGood}
           />
         </h1>
       ) : (
@@ -51,7 +59,7 @@ export const App: React.FC = () => {
                     data-cy="RemoveButton"
                     type="button"
                     className="button is-info"
-                    onClick={() => setSelectedGood('')}
+                    onClick={handleRemoveGood}
                   >
                     -
                   </button>
@@ -60,7 +68,7 @@ export const App: React.FC = () => {
                     data-cy="AddButton"
                     type="button"
                     className="button"
-                    onClick={() => setSelectedGood(good)}
+                    onClick={() => handleAddGood(good)}
                   >
                     +
                   </button>
